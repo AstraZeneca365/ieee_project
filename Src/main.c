@@ -26,7 +26,7 @@ int main(void)
 	*((uint32_t*)(GPIOA_MODER)) &= ~(1 << 11); //PA5 --> 01, bit11 = 0
 	*((uint32_t*)(GPIOA_MODER)) |= (1 << 10); // bit10 = 1
 
-	*((uint32_t*)(TIM2_PSC)) = 7999; //prescaler slows down clock to from 8MHz to 1kHz, timer ticks every 1ms
+	*((uint32_t*)(TIM2_PSC)) = 15999; //prescaler slows down clock to from 16MHz to 1kHz, timer ticks every 1ms
 	*((uint32_t*)(TIM2_ARR)) = 1999; // ARR counts the number of ticks, we need 2000ms so ARR = 1999
 	*((uint32_t*)(TIM2_CR1)) |= (1 << 0); //bit0 = 1 to enable counter
 
