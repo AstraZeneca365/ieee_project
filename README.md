@@ -25,7 +25,7 @@ Basic working concept :-
 Register Configuration for 2-Second Delay :-
 
       >In this program, general purpose timer - TIM2 was used which is connected APB1 bus.
-      >PSC value was set to 7999 as the clock is 8MHz and the preferred tick rate was 1KHz (timer take 1ms per tick).
+      >PSC value was set to 15999 as the clock is 16MHz and the preferred tick rate was 1KHz (timer take 1ms per tick).
       >For a delay of 2s - ARR was set to 1999; for 2000ms we need 2000 ticks of the timer (verified using above formula).
       >The control register of the timer was set 1 to enable the timer (TIM2_CR1).
       >The status register of the timer was used as a flag (TIM2_SR).
