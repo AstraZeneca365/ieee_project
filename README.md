@@ -32,4 +32,48 @@ Register Configuration for 2-Second Delay :-
       >The status register (update flag) becomes 1 when the timer finishes counting, after this the flag is reset to start the event again.
                                           
 
+
+
+
+PART 2 - 
+Objective - Understand and implement serial communication between the microcontroller and a computer using UART.
+
+UART Protocol :-
+
+      >UART is Universal Asynchronus Receiver/Transmitter. It is used for serial communication between the microcontroller and other devices.
+      >It is a protocol which allows serial communication to happen wihtout the use of clock signal (hence Asynchronus).
+      >Two wires are present which are the Tx and Rx (transmitter and receiver) from transmitting and recepting data respectively.
+      >It can be used for low speed applications. In comparision with parallel communication which is better for high speed, UART is better in terms of less complexity.
+      >Baud rate is the rate at which bits are transmitted per second. When two devices are communicating, the Baud rate for both should be same.
+      >Data sent follows a frame format which includes - start bit, data bits, parity bit (optional) and stop bit
+                              >start bit - when the start bit is logic 0, it allows the receiver to know that data will be sent.
+                              >data bit - these bits are the actual information to be passed.
+                              >stop bit - when the stop bit (logic 1) is passed, it indicated that the data transfer has finished.
+                              >parity bit - this is a bit which is used to identify if the data passed is correct or not. It can either be even parity or odd parity. In even parity, the parity bit is set so that the total number of 1's is even. In odd parity, the parity bit is set so that the total number of 1's is odd.
+
+
+      >Asynchronus communication is all about Baud rate and start and stop bits (without the use of clock).
                                           
+2) Implementation Details :-
+
+        >RCC_AHB1ENR (used for GPIOA), RCC_APB1ENR (used for USART2), GPIOA_MODER, GPIOA_AFRL (to use PA2 as TX and PA3 as RX), USART2_BRR (to set baud rate - no of clock cycles per bit), USART2_CR1 (to enable USART2), USART2_SR (to check if data can be sent or not using flags), USART2_SR (to store the data to be transmitted).
+
+        >Baud rate - 9600 bits/sec, BRR register stores the number of cylces of clock after which data is to be sent, so in one bit is transmitted in 1/9600s - during which 16000000/9600 = 1667(approx) clock cycles are completed. Therefore USART2_BRR is set to 1667.
+
+
+         >Steps involved in transmitting data :-
+               1) Enable USART
+               2) Before sending each character, check the TXE flag (in Transmit register) is empty.
+               3) SET TXE and send the data into USART data register.
+               
+
+
+
+
+
+
+
+
+
+
+
