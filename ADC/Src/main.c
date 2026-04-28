@@ -28,7 +28,7 @@ int main(void)
 
         uint32_t analog_val = ADC1->DR;
 
-        int digital_val = (analog_val * 3300) / 4095; //CONVERSION FROM ANALOG TO DIGITAL
+        int digital_val = (analog_val * 3300) / 4096; //CONVERSION FROM ANALOG TO DIGITAL
 
         char msg[50];
 
