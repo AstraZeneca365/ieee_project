@@ -1,3 +1,6 @@
+
+ASSIGNMENT 1 -
+
 PART 1 - 
 Objective - Design a precise LED blinking system using a hardware timer. The LED must toggle every 2 seconds, strictly based on timer events.
 
@@ -66,6 +69,38 @@ UART Protocol :-
                2) Before sending each character, check the TXE flag (in Transmit register) is empty.
                3) SET TXE and send the data into USART data register.
                
+
+
+ASSIGNMENT 2 -
+
+Part 1 -
+Objective - Design a bare-metal STM32 project using CMSIS (register-level macros only) to read an analog voltage from a potentiometer and convert it into a digital value using the ADC.
+
+ADC :-
+
+      > An analog to digital Converter (ADC) is a peripheral that converts a continuous analog signal/voltage into a discrete digital value.
+      > Resolution in adc refers to the smallest change in the analog input signal which can be detected. For example in a 12 bit adc, there are 2^12 levels, if the input voltage is 3.3V then the smallest change = 3.3/4096 = 0.0008v
+      > STM32 uses a SAR ADC (successive approximation register adc).
+      > The SAR ADC uses binary search and approximates each bit from MSB to LSB.
+
+Registers used :- 
+
+      > RCC->AHB1ENR	Enables GPIO clock
+        RCC->APB1ENR	Enables USART2 clock
+        RCC->APB2ENR	Enables ADC1 clock
+
+      > GPIOA->MODER	Sets PA0 to 11 for analog mode
+        GPIOA->AFR[0]	Sets alternate function for USART2_TX (AF7)
+
+      > ADC1->CR2	      Enable ADC
+        ADC1->SQR3	Select input channel (channel 0 in this case)
+        ADC1->SR	      Status (EOC flag)
+        ADC1->DR	      Stores final result
+
+      > USART2->BRR	Sets Baud rate
+        USART2->CR1	Enable UART and transmitter
+        USART2->SR	Used as flag
+        USART2->DR	To store data
 
 
 
