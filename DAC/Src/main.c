@@ -42,9 +42,9 @@ int main(void)
 
 	while(1)
 	{
-		for(int i = 0; i < 4096; i++)
+		for(int i = 0; i < 100; i++)
 		{
-			float angle = (2*3.14159*i)/4096;
+			float angle = (2*3.14159*i)/100;
 			DAC->DHR12R2 = (uint32_t)((sin(angle) + 1)*2048);
 			delay();
 		}
