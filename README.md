@@ -93,7 +93,7 @@ Registers used :-
         GPIOA->AFR[0]	Sets alternate function for USART2_TX (AF7)
 
       > ADC1->CR2	      Enable ADC
-        ADC1->SQR3	Select input channel (channel 0 in this case)
+        ADC1->SQR3	      Select input channel (channel 0 in this case)
         ADC1->SR	      Status (EOC flag)
         ADC1->DR	      Stores final result
 
